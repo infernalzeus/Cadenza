@@ -1,0 +1,5 @@
+id,file,title,genre,mood,key,mode,bpm,duration_s,energy,brightness,added
+song_001,band.wav,band,techno,energetic,A,major,129.2,16.4,0.3626,2947,2026-07-26
+song_002,myfav.wav,myfav,techno,energetic,A,major,129.2,16.4,0.3626,2947,2026-07-26
+song_003,Radiohead_-_Everything_In_Its_Right_Place_Instrumental.mp3,Radiohead_-_Everything_In_Its_Right_Place_Instrumental,house,energetic,C,minor,123.0,90.0,0.1046,378,2026-07-26
+song_004,Lumos_Hedwigs_Theme.mp3,Lumos_Hedwigs_Theme,dnb,energetic,E,minor,152.0,90.0,0.02,1279,2026-07-26

@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+data/corpus/
+out/
+models/
+data/library/
+*.wav
+*.mp3
+!templates/*.mmp

@@ -1,0 +1,32 @@
+{
+  "nodes": [
+    {"id":"title","type":"text","text":"# Cadenza — Architecture\nCategorised MIDI corpus → generator + classifier → LMMS → Audacity.\n**Classifier = taste (score/filter), not composer.**","x":-1320,"y":-480,"width":1040,"height":120,"color":"6"},
+
+    {"id":"corpus","type":"text","text":"### 🎹 MIDI corpus\n`data/corpus/*.mid`\nLoops, chord progs, drum patterns.\nYou curate the raw material.","x":-1320,"y":-140,"width":300,"height":150,"color":"5"},
+    {"id":"extract","type":"text","text":"### ⚙️ extract.py\nmido / music21 → per-loop features.\nrole · key · bpm · density · pitch · syncopation","x":-980,"y":-140,"width":300,"height":150,"color":"5"},
+    {"id":"catalog","type":"text","text":"### 🗄️ catalog.csv\n**The categorised database.**\nfeatures + your genre/mood labels.\nTrains both brains.","x":-640,"y":-140,"width":300,"height":150,"color":"3"},
+
+    {"id":"generator","type":"text","text":"### 🎲 generate.py\nProposes N candidate arrangements.\nP0: Markov chain · P2: LSTM/Transformer","x":-280,"y":-360,"width":300,"height":150,"color":"6"},
+    {"id":"classifier","type":"text","text":"### 👂 classify.py\nsklearn model = **taste**.\nScores each candidate vs requested\ngenre/mood → picks best.","x":-280,"y":60,"width":300,"height":160,"color":"6"},
+
+    {"id":"writer","type":"text","text":"### 📝 lmms_writer.py\nBest arrangement → **.mmp XML**.\n(.mmp is plain XML; .mmpz = gzipped)","x":100,"y":-140,"width":300,"height":150,"color":"2"},
+    {"id":"template","type":"text","text":"### 🧩 base.mmp\nHand-built LMMS project.\nReverse-engineer schema → template.","x":100,"y":110,"width":300,"height":130,"color":"2"},
+
+    {"id":"render","type":"text","text":"### 🔊 LMMS --render\n`lmms render song.mmp -o song.wav`\nHeadless, no GUI. → WAV","x":460,"y":-140,"width":300,"height":150,"color":"4"},
+    {"id":"audacity","type":"text","text":"### 🎚️ Audacity\nmod-script-pipe (Python).\nNormalize · EQ · fades · export.","x":820,"y":-140,"width":300,"height":150,"color":"4"},
+    {"id":"output","type":"text","text":"### ✅ song.mp3\nFinished track for the\nrequested category.","x":1180,"y":-140,"width":260,"height":150,"color":"4"}
+  ],
+  "edges": [
+    {"id":"e1","fromNode":"corpus","fromSide":"right","toNode":"extract","toSide":"left"},
+    {"id":"e2","fromNode":"extract","fromSide":"right","toNode":"catalog","toSide":"left","label":"features"},
+    {"id":"e3","fromNode":"catalog","fromSide":"right","toNode":"generator","toSide":"left","label":"train"},
+    {"id":"e4","fromNode":"catalog","fromSide":"right","toNode":"classifier","toSide":"left","label":"train labels"},
+    {"id":"e5","fromNode":"generator","fromSide":"bottom","toNode":"classifier","toSide":"top","label":"candidates"},
+    {"id":"e6","fromNode":"classifier","fromSide":"left","toNode":"generator","toSide":"right","label":"reject → resample","color":"1"},
+    {"id":"e7","fromNode":"classifier","fromSide":"right","toNode":"writer","toSide":"bottom","label":"best pick"},
+    {"id":"e8","fromNode":"template","fromSide":"top","toNode":"writer","toSide":"bottom","label":"template"},
+    {"id":"e9","fromNode":"writer","fromSide":"right","toNode":"render","toSide":"left","label":".mmp"},
+    {"id":"e10","fromNode":"render","fromSide":"right","toNode":"audacity","toSide":"left","label":"WAV"},
+    {"id":"e11","fromNode":"audacity","fromSide":"right","toNode":"output","toSide":"left","label":"MP3"}
+  ]
+}

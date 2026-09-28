@@ -1,0 +1,6 @@
+{
+  "lmms_bin": "Z:\\Programs\\LMMS\\lmms.exe",
+  "ffmpeg_bin": "ffmpeg",
+  "output_dir": "out",
+  "corpus_dir": "data/corpus"
+}

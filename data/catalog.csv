@@ -1,0 +1,4 @@
+id,file,role,genre,mood,key,bpm,bars,note_density,mean_pitch,syncopation
+loop_001,corpus/lofi_keys_01.mid,chords,lofi,calm,Fmaj,72,4,3.2,60,0.18
+loop_002,corpus/lofi_drums_01.mid,drums,lofi,calm,,72,2,6.0,45,0.31
+loop_003,corpus/house_bass_01.mid,bass,house,energetic,Amin,124,4,4.5,40,0.22
